@@ -21,6 +21,11 @@ def poll():
     out.close()
     return render_template('thankyou.html', data=vote)
 
+@app.route('/res')
+def res():
+    r = requests.get(os.environ['CONTAINER_IP'])
+    return render_template('a.html', data=r.text)
+
 @app.route('/results')
 def show_results():
     votes = {}
